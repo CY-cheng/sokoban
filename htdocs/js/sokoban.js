@@ -570,16 +570,20 @@ let sokoban = {
    */
   tiling: {},
   
-  /*做遊戲檢查*/
+  //檢查物件
   game_check:function(){
     for (let x = 0; x < this.level.length; x++) {
       for (let y = 0; y < this.level[x].length; y++) {
         if((this.level[x][y] == SOKOBAN.GOAL)||(this.level[x][y] == SOKOBAN.BOX)){
-			return false;
+          return false;
         }
       }
     }
-    return alert("恭喜你過關了！！！");
+    return true;
+  },
+  //訊息顯示
+  message:function(){
+  	return alert("恭喜你過關了！！！");
   },
   /**
    * 遊戲更新介面函式
@@ -589,7 +593,10 @@ let sokoban = {
   update: function (e) {
     this.move(e);
     this.paint();
-	this.game_check();
+    //做遊戲檢查
+    if(this.game_check()==true){
+        this.message();
+    }
   }
 };
 
