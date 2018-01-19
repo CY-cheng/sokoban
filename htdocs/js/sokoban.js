@@ -583,7 +583,7 @@ let sokoban = {
   },
   //訊息顯示
   message:function(){
-  	return alert("恭喜你過關了！！！");
+  	return alert("你過關了！！！");
   },
   /**
    * 遊戲更新介面函式
