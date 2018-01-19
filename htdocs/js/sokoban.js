@@ -72,6 +72,20 @@ let levels = [
      "------------",
      "------------"
    ],
+   [
+	 "##########",
+     "------------",
+     "--#######---",
+     "--# ..$ #---",
+     "--# # $ #---",
+     "--# # # #---",
+     "--# $@# #---",
+     "--#.$   #---",
+     "--#.#####---",
+     "--###-------",
+     "------------",
+     "------------"
+   ]
 ];
 
 /**
@@ -555,7 +569,18 @@ let sokoban = {
    * 貼圖函式和指令的對應表
    */
   tiling: {},
-
+  
+  /*做遊戲檢查*/
+  game_check:function(){
+    for (let x = 0; x < this.level.length; x++) {
+      for (let y = 0; y < this.level[x].length; y++) {
+        if((this.level[x][y] == SOKOBAN.GOAL)||(this.level[x][y] == SOKOBAN.BOX)){
+			return false;
+        }
+      }
+    }
+		alert("恭喜你過關了！！！");
+  },
   /**
    * 遊戲更新介面函式
    *
@@ -564,7 +589,8 @@ let sokoban = {
   update: function (e) {
     this.move(e);
     this.paint();
-  },
+	this.game_check();
+  }
 };
 
 /**
